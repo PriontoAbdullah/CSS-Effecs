@@ -6,6 +6,7 @@
     <link rel="stylesheet" type="text/css" href="Loading.css">
     <link rel="stylesheet" type="text/css" href="Search.css">
     <link rel="stylesheet" type="text/css" href="Search-box.css">
+    <link rel="stylesheet" type="text/css" href="Face-Effect.css">
 
     <script defer src="https://use.fontawesome.com/releases/v5.0.6/js/all.js"> </script>
     <title> CSS Effect </title>
@@ -34,5 +35,30 @@
          </a>
       </div>
     </section>
+
+    <section id="Face-Effect">
+      <div class="body">
+         <div class="face"> 
+            <div class="eyes"> 
+               <div class="eye"></div>
+               <div class="eye"></div>
+            </div>
+         </div>
+      </div>
+    </section>
+
+    <script>
+      document.getElementById('Face-Effect').addEventListener('mousemove', eyeball);
+      function eyeball(){
+         var eye = document.querySelectorAll('.eye');
+         eye.forEach(function(eye){
+            let x = (eye.getBoundingClientRect().left) + (eye.clientWidth / 2);
+            let y = (eye.getBoundingClientRect().top) + (eye.clientHeight / 2);
+            let radian = Math.atan2(event.pageX - x, event.pageY - y);
+            let rot = (radian * (720 / Math.PI) * -1 ) + 270;
+            eye.style.transform = "rotate("+ rot + "deg)";
+         })
+       } 
+    </script>
  </body>
 </html>
